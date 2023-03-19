@@ -145,11 +145,11 @@ public class DailyActivity extends AppCompatActivity {
                 tvb.setText("Break Fast: " + bc);
 
                 v1 = findViewById(R.id.view0);
-                v1.setVisibility(View.VISIBLE);
+                v1.setVisibility(View.INVISIBLE);
                 v2 = findViewById(R.id.view1);
-                v2.setVisibility(View.VISIBLE);
+                v2.setVisibility(View.INVISIBLE);
                 v3 = findViewById(R.id.view2);
-                v3.setVisibility(View.VISIBLE);
+                v3.setVisibility(View.INVISIBLE);
 
 
             } catch (JSONException e) {
@@ -210,11 +210,11 @@ public class DailyActivity extends AppCompatActivity {
                 tvl.setText("Lunch: " + lc);
 
                 v1 = findViewById(R.id.view0);
-                v1.setVisibility(View.VISIBLE);
+                v1.setVisibility(View.INVISIBLE);
                 v2 = findViewById(R.id.view1);
-                v2.setVisibility(View.VISIBLE);
+                v2.setVisibility(View.INVISIBLE);
                 v3 = findViewById(R.id.view2);
-                v3.setVisibility(View.VISIBLE);
+                v3.setVisibility(View.INVISIBLE);
 
 
             } catch (JSONException e) {
@@ -275,11 +275,11 @@ public class DailyActivity extends AppCompatActivity {
                 tvd.setText("Dinner: " + dc);
 
                 v1 = findViewById(R.id.view0);
-                v1.setVisibility(View.VISIBLE);
+                v1.setVisibility(View.INVISIBLE);
                 v2 = findViewById(R.id.view1);
-                v2.setVisibility(View.VISIBLE);
+                v2.setVisibility(View.INVISIBLE);
                 v3 = findViewById(R.id.view2);
-                v3.setVisibility(View.VISIBLE);
+                v3.setVisibility(View.INVISIBLE);
 
 
             } catch (JSONException e) {
