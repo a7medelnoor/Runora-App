@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "825085167929",
+    "project_id": "runora-86c80",
+    "storage_bucket": "runora-86c80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825085167929:android:04116127292152f4aa00e8",
+        "android_client_info": {
+          "package_name": "com.runora_dev.runora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825085167929-9sc6t9bs1iab8kimuh6skk0uq79tfnog.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.runora_dev.runora",
+            "certificate_hash": "b674ce82c9043edd5963987c78c5949ff1eb8dae"
+          }
+        },
+        {
+          "client_id": "825085167929-ouv44g8ta4urnq99ttml40gdi274j0v3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRfZoRggTCujzIuonfzMkn-L8P4V6ydng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825085167929-ouv44g8ta4urnq99ttml40gdi274j0v3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
