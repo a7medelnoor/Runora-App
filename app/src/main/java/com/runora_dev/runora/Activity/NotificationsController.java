@@ -47,7 +47,7 @@ public class NotificationsController {
                 // Set the pending intent to be initiated when the user touche the notification.
                 .setContentIntent(
                         PendingIntent.getActivity(context, 0, backIntent,
-                                PendingIntent.FLAG_UPDATE_CURRENT))
+                                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT))
                 .setAutoCancel(true);
 
         notify(context, builder.build());

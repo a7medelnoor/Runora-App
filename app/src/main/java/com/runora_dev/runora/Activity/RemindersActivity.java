@@ -113,7 +113,7 @@ public class RemindersActivity extends AppCompatActivity implements View.OnClick
         else if (view.getId() == R.id.startBtn){
             AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
             Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
                     , (delay* 60 * 1000), pendingIntent);
             /*alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),delay*60*1000, pendingIntent);
@@ -130,7 +130,7 @@ public class RemindersActivity extends AppCompatActivity implements View.OnClick
             editor.putString("water_reminder", "false");
             AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
             Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0, alarmIntent,  PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
             alarmManager.cancel(pendingIntent);
             Toast.makeText(this, "Water Reminders Stopped", Toast.LENGTH_SHORT).show();
             editor.commit();

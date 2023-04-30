@@ -111,7 +111,7 @@ public class Home extends AppCompatActivity {
         if (sharedPreferences.getString("water_reminder", "false").matches("true")) {
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT );
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), t * 60 * 1000, pendingIntent);
         }
     }
