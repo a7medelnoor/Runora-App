@@ -3,14 +3,21 @@ package com.runora_dev.runora.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.runora_dev.runora.R;
 import com.runora_dev.runora.Webservice.DatabaseHelper;
 
@@ -24,7 +31,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.util.HashMap;
 
 
 /*
@@ -43,6 +50,8 @@ public class DailyActivity extends AppCompatActivity {
     String bc, lc, dc;
     Button btnClose, btnRep;
     DatabaseHelper databaseHelper;
+    private FirebaseDatabase database;
+    private static final String TAG = "DailyActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +66,10 @@ public class DailyActivity extends AppCompatActivity {
         tvd = findViewById(R.id.tvd);
         btnRep = findViewById(R.id.btndailyrep);
         btnRep = findViewById(R.id.btnclose);
+
+         // initialize Firebase database
+        FirebaseApp.initializeApp(this);
+        database = FirebaseDatabase.getInstance();
     }
 
     public void onClose(View v) {
@@ -86,10 +99,54 @@ public class DailyActivity extends AppCompatActivity {
         fd = Float.parseFloat(dc);
         String pattern = "dd-MM-yyyy";
         String dt = new SimpleDateFormat(pattern).format(new Date());
+
+
         System.out.println(sb + " " + fb + " " + sl + " " + fl + " " + sd + " " + fd + " " + dt);
+
+        // Save data to offline
         databaseHelper.addDailyFood(sb, fb, sl, fl, sd, fd, dt);
+
+         // Save data to firebase
+        //Create a new database reference object
+        DatabaseReference reference = database.getReference("dailyFood");
+
+
+        // Create hashmap object to store the data
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("breakfastCalories", fb);
+        data.put("lunchCalories", fl);
+        data.put("dinnerCalories",fd);
+        data.put("date", dt);
+        // Use the setValue() method to save the data to Firebase Realtime Database
+        reference.push().setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "Saved to Firebase");
+                Toast.makeText(getApplicationContext(), "Added to Firebase Successfully", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Error saving to Firebase", e.fillInStackTrace());
+                Log.e(TAG, "Error saving to Firebase Stack trace", e.fillInStackTrace());
+                Log.e(TAG, "Error saving to Firebase cause", e.getCause());
+                Toast.makeText(getApplicationContext(), "Error adding data", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Log.d(TAG,"Saved to firebase"+reference);
+        Log.d(TAG,"Saved to firebase"+data);
+
+        // Display a toast message to the user
         Toast.makeText(getApplicationContext(), "Added Successfully", Toast.LENGTH_SHORT).show();
+
+        // Close the current activity
         this.finish();
+    }
+
+    public void saveDataToFirebase(){
+
     }
 
 
