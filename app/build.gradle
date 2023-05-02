@@ -9,7 +9,7 @@ plugins {
 android {
     compileSdkVersion 31
     defaultConfig {
-        applicationId "runora.inc"
+        applicationId "com.runora_dev.runoraf"
         minSdk 22
         targetSdk 31
         versionCode 1
