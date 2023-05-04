@@ -89,7 +89,7 @@
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:text="abc123"
+                android:text="123456"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
