@@ -9,6 +9,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="solidCircle">#AAFFFFFF</color>
+    <color name="grey">#AAA3A3A3</color>
     <color name="circleBorder">#50FFFFFF</color>
     <!-- 1st Gradient color -->
     <color name="colorPurple_start">#D500F9</color>
